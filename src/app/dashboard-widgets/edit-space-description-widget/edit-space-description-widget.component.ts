@@ -22,6 +22,7 @@ export class EditSpaceDescriptionWidgetComponent implements OnInit, OnDestroy {
   collaborators: User[] = [];
   filteredCollaborators: User[] = [];
   collaboratorCount: number = 0;
+  searchTerm: string = '';
 
   private subscriptions: Subscription[] = [];
   private _descriptionUpdater: Subject<string> = new Subject();
@@ -133,16 +134,17 @@ export class EditSpaceDescriptionWidgetComponent implements OnInit, OnDestroy {
     this.filteredCollaborators = this.collaborators;
   }
 
-  onCollaboratorSearchChange(searchTerm: string): void {
-    if (searchTerm === '') {
+  onCollaboratorSearchChange(event: string): void {
+    this.searchTerm = event;
+    if (this.searchTerm === '') {
       this.filteredCollaborators = this.collaborators;
       return;
     }
     this.filteredCollaborators = this.collaborators
       .filter(
         (user: User): boolean =>
-          user.attributes.fullName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
-          || user.attributes.username.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+          user.attributes.fullName.toLocaleLowerCase().includes(this.searchTerm.toLocaleLowerCase())
+          || user.attributes.username.toLocaleLowerCase().includes(this.searchTerm.toLocaleLowerCase())
         );
   }
 

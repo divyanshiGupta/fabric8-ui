@@ -6,7 +6,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { Fabric8WitModule } from 'ngx-fabric8-wit';
 import { FeatureFlagModule } from 'ngx-feature-flag';
-import { AlmEditableModule, AlmIconModule, InfiniteScrollModule } from 'ngx-widgets';
+import { AlmEditableModule, AlmIconModule, InfiniteScrollModule, WidgetsModule } from 'ngx-widgets';
 import { AddCollaboratorsDialogModule } from '../../space/settings/collaborators/add-collaborators-dialog/add-collaborators-dialog.module';
 import { EditSpaceDescriptionWidgetComponent } from './edit-space-description-widget.component';
 
@@ -22,7 +22,8 @@ import { EditSpaceDescriptionWidgetComponent } from './edit-space-description-wi
     ModalModule.forRoot(),
     PopoverModule.forRoot(),
     InfiniteScrollModule,
-    RouterModule
+    RouterModule,
+    WidgetsModule
   ],
   declarations: [EditSpaceDescriptionWidgetComponent],
   exports: [EditSpaceDescriptionWidgetComponent]
